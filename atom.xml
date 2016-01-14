@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Perfect Is Shit]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://feboyonroad.me/"/>
-  <updated>2016-01-14T11:53:47.000Z</updated>
+  <updated>2016-01-14T13:56:45.000Z</updated>
   <id>http://feboyonroad.me/</id>
   
   <author>
@@ -19,11 +19,12 @@
     <link href="http://feboyonroad.me/2016/01/14/JS%E4%B8%AD%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83%E4%B8%8D%E5%BE%97%E4%B8%8D%E8%AF%B4%E7%9A%84%E6%95%85%E4%BA%8B/"/>
     <id>http://feboyonroad.me/2016/01/14/JS中作用域和执行环境不得不说的故事/</id>
     <published>2016-01-14T11:23:03.000Z</published>
-    <updated>2016-01-14T11:53:47.000Z</updated>
-    <content type="html"><![CDATA[<p><img src="http://feboyonroad.me/img/jsHoist1.jpg" alt="JS高级变量提升I" title="JS高级变量提升I"><br><img src="http://feboyonroad.me/img/jsHoist2.jpg" alt="JS高级变量提升II" title="JS高级变量提升II"><br><img src="http://feboyonroad.me/img/executeEnv.jpg" alt="执行环境和执行环境对象" title="执行环境和执行环境对象"></p>
+    <updated>2016-01-14T13:56:45.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="JS_u4E4B_u4F5C_u7528_u57DF_u7684_u6765_u9F99_u53BB_u8109"><a href="#JS_u4E4B_u4F5C_u7528_u57DF_u7684_u6765_u9F99_u53BB_u8109" class="headerlink" title="JS之作用域的来龙去脉"></a>JS之作用域的来龙去脉</h1><p>&nbsp;&nbsp;&nbsp;&nbsp; 关于JS中的作用域和作用域链，一直以来都是这门语言中比较核心和复杂的机制。很多时候，我们感觉自己懂了，会用了，其实也只是停留在表面。<br>&nbsp;&nbsp;&nbsp;&nbsp; 之前自己写过一个关于这方面的PPT，里面较为细致地讲述了关于JS中AO(活动对象)、VO（活动对象）、[[scope]]等相关的知识点。今天就分享给大家：<a href="http://feboyonroad.me/doc/JS之作用域的来龙去脉.key">js之作用域的来龙去脉</a>（该文件是.key格式，需要用keynote打开）。感兴趣的小伙伴可以来一起学习～</p>
+<h2 id="u9057_u7559_u95EE_u9898"><a href="#u9057_u7559_u95EE_u9898" class="headerlink" title="遗留问题"></a>遗留问题</h2><p>&nbsp;&nbsp;&nbsp;&nbsp; 在上面的PPT里，我提到了关于JS中预处理的问题。关于这点，当时我的认识也有误区，幸运的是，后来看到一本书《单页Web应用：JavaScript从前端到后端》（下载链接见我之前的文章），在这本书里，讲到了我缺失的那部分知识点。现在也分享给大家～<br><img src="http://feboyonroad.me/img/jsHoist1.jpg" alt="JS高级变量提升I" title="JS高级变量提升I"><br><img src="http://feboyonroad.me/img/jsHoist2.jpg" alt="JS高级变量提升II" title="JS高级变量提升II"><br><img src="http://feboyonroad.me/img/executeEnv.jpg" alt="执行环境和执行环境对象" title="执行环境和执行环境对象"></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p><img src="http://feboyonroad.me/img/jsHoist1.jpg" alt="JS高级变量提升I" title="JS高级变量提升I"><br><img src="http://feboyonroad.me/img/jsHoist2.jpg"]]>
+    <![CDATA[<h1 id="JS_u4E4B_u4F5C_u7528_u57DF_u7684_u6765_u9F99_u53BB_u8109"><a href="#JS_u4E4B_u4F5C_u7528_u57DF_u7684_u6765_u9F99_u53BB_u8109" class=]]>
     </summary>
     
       <category term="js 作用域(链) 执行环境 AO VO 高级变量提升" scheme="http://feboyonroad.me/tags/js-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E9%93%BE-%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83-AO-VO-%E9%AB%98%E7%BA%A7%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/"/>

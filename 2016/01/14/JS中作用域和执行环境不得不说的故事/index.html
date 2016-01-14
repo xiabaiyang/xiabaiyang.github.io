@@ -11,19 +11,19 @@
     
 
     
-    <meta name="description">
+    <meta name="description" content="JS之作用域的来龙去脉&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 关于JS中的作用域和作用域链，一直以来都是这门语言中比较核心和复杂的机制。很多时候，我们感觉自己懂了，会用了，其实也只是停留在表面。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 之前自己写过一个关于这方面的PPT，里面较为细致地讲述了关于JS中AO(活动对象)、VO（活动对象）、[[scope]]等相关的知识点。今天就分享">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS中作用域和执行环境不得不说的故事">
 <meta property="og:url" content="http://feboyonroad.me/2016/01/14/JS中作用域和执行环境不得不说的故事/index.html">
 <meta property="og:site_name" content="爱就像内存泄露">
-<meta property="og:description">
+<meta property="og:description" content="JS之作用域的来龙去脉&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 关于JS中的作用域和作用域链，一直以来都是这门语言中比较核心和复杂的机制。很多时候，我们感觉自己懂了，会用了，其实也只是停留在表面。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 之前自己写过一个关于这方面的PPT，里面较为细致地讲述了关于JS中AO(活动对象)、VO（活动对象）、[[scope]]等相关的知识点。今天就分享">
 <meta property="og:image" content="http://feboyonroad.me/img/jsHoist1.jpg">
 <meta property="og:image" content="http://feboyonroad.me/img/jsHoist2.jpg">
 <meta property="og:image" content="http://feboyonroad.me/img/executeEnv.jpg">
-<meta property="og:updated_time" content="2016-01-14T11:53:47.000Z">
+<meta property="og:updated_time" content="2016-01-14T13:56:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS中作用域和执行环境不得不说的故事">
-<meta name="twitter:description">
+<meta name="twitter:description" content="JS之作用域的来龙去脉&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 关于JS中的作用域和作用域链，一直以来都是这门语言中比较核心和复杂的机制。很多时候，我们感觉自己懂了，会用了，其实也只是停留在表面。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 之前自己写过一个关于这方面的PPT，里面较为细致地讲述了关于JS中AO(活动对象)、VO（活动对象）、[[scope]]等相关的知识点。今天就分享">
 
     
     <link rel="alternative" href="/atom.xml" title="爱就像内存泄露" type="application/atom+xml">
@@ -109,11 +109,12 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JS_u4E4B_u4F5C_u7528_u57DF_u7684_u6765_u9F99_u53BB_u8109"><span class="toc-number">1.</span> <span class="toc-text">JS之作用域的来龙去脉</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#u9057_u7559_u95EE_u9898"><span class="toc-number">1.1.</span> <span class="toc-text">遗留问题</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<p><img src="http://feboyonroad.me/img/jsHoist1.jpg" alt="JS高级变量提升I" title="JS高级变量提升I"><br><img src="http://feboyonroad.me/img/jsHoist2.jpg" alt="JS高级变量提升II" title="JS高级变量提升II"><br><img src="http://feboyonroad.me/img/executeEnv.jpg" alt="执行环境和执行环境对象" title="执行环境和执行环境对象"></p>
+		<h1 id="JS_u4E4B_u4F5C_u7528_u57DF_u7684_u6765_u9F99_u53BB_u8109"><a href="#JS_u4E4B_u4F5C_u7528_u57DF_u7684_u6765_u9F99_u53BB_u8109" class="headerlink" title="JS之作用域的来龙去脉"></a>JS之作用域的来龙去脉</h1><p>&nbsp;&nbsp;&nbsp;&nbsp; 关于JS中的作用域和作用域链，一直以来都是这门语言中比较核心和复杂的机制。很多时候，我们感觉自己懂了，会用了，其实也只是停留在表面。<br>&nbsp;&nbsp;&nbsp;&nbsp; 之前自己写过一个关于这方面的PPT，里面较为细致地讲述了关于JS中AO(活动对象)、VO（活动对象）、[[scope]]等相关的知识点。今天就分享给大家：<a href="http://feboyonroad.me/doc/JS之作用域的来龙去脉.key">js之作用域的来龙去脉</a>（该文件是.key格式，需要用keynote打开）。感兴趣的小伙伴可以来一起学习～</p>
+<h2 id="u9057_u7559_u95EE_u9898"><a href="#u9057_u7559_u95EE_u9898" class="headerlink" title="遗留问题"></a>遗留问题</h2><p>&nbsp;&nbsp;&nbsp;&nbsp; 在上面的PPT里，我提到了关于JS中预处理的问题。关于这点，当时我的认识也有误区，幸运的是，后来看到一本书《单页Web应用：JavaScript从前端到后端》（下载链接见我之前的文章），在这本书里，讲到了我缺失的那部分知识点。现在也分享给大家～<br><img src="http://feboyonroad.me/img/jsHoist1.jpg" alt="JS高级变量提升I" title="JS高级变量提升I"><br><img src="http://feboyonroad.me/img/jsHoist2.jpg" alt="JS高级变量提升II" title="JS高级变量提升II"><br><img src="http://feboyonroad.me/img/executeEnv.jpg" alt="执行环境和执行环境对象" title="执行环境和执行环境对象"></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -167,7 +168,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JS_u4E4B_u4F5C_u7528_u57DF_u7684_u6765_u9F99_u53BB_u8109"><span class="toc-number">1.</span> <span class="toc-text">JS之作用域的来龙去脉</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#u9057_u7559_u95EE_u9898"><span class="toc-number">1.1.</span> <span class="toc-text">遗留问题</span></a></li></ol></li></ol>
  
   </div>
 
